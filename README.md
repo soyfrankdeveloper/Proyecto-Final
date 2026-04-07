@@ -1,1 +1,1 @@
-Juego tipo Pong ambientado en un entorno submarino donde el movimiento de los objetos está influenciado por la resistencia del agua y corrientes marinas simples.
+Videojuego basado en tiro al blanco ambientado en el fondo oceánico, donde el jugador lanza proyectiles para acertar objetivos mientras las condiciones físicas del entorno submarino afectan el movimiento.

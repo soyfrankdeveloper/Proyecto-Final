@@ -1,9 +1,10 @@
 #ifndef PERSONAJE_H
 #define PERSONAJE_H
 
-#include "Entidad.h"
+#include "entidad.h"
 
 class Personaje : public Entidad
+
 {
 protected:
     int vidas;

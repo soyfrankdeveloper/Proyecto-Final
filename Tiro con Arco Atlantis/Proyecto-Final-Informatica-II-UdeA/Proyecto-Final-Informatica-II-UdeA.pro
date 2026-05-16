@@ -7,14 +7,20 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Entidades/enemigo.cpp \
     Entidades/entidad.cpp \
+    Entidades/jugador.cpp \
     Entidades/personaje.cpp \
+    Entidades/proyectil.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    Entidades/enemigo.h \
     Entidades/entidad.h \
+    Entidades/jugador.h \
     Entidades/personaje.h \
+    Entidades/proyectil.h \
     mainwindow.h
 
 FORMS += \

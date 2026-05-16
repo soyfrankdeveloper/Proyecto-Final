@@ -2,6 +2,7 @@
 #define ENTIDAD_H
 
 class Entidad
+
 {
 protected:
     float x;

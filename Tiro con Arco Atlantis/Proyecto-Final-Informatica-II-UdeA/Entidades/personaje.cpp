@@ -1,17 +1,20 @@
 #include "personaje.h"
 
 Personaje::Personaje()
+
 {
     vidas = 3;
     puntaje = 0;
 }
 
 void Personaje::disparar()
+
 {
 
 }
 
 void Personaje::recibirDanio(int danio)
+
 {
     vidas -= danio;
 
@@ -22,11 +25,13 @@ void Personaje::recibirDanio(int danio)
 }
 
 int Personaje::getVidas()
+
 {
     return vidas;
 }
 
 int Personaje::getPuntaje()
+
 {
     return puntaje;
 }

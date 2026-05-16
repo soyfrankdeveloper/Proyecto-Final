@@ -1,6 +1,7 @@
 #include "entidad.h"
 
 Entidad::Entidad()
+
 {
     x = 0;
     y = 0;
@@ -8,17 +9,20 @@ Entidad::Entidad()
 }
 
 void Entidad::setPosicion(float nuevax, float nuevay)
+
 {
     x = nuevax;
     y = nuevay;
 }
 
 float Entidad::getX()
+
 {
     return x;
 }
 
 float Entidad::getY()
+
 {
     return y;
 }

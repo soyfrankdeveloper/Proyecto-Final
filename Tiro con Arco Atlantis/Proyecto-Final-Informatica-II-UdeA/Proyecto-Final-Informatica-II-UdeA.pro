@@ -12,6 +12,9 @@ SOURCES += \
     Entidades/jugador.cpp \
     Entidades/personaje.cpp \
     Entidades/proyectil.cpp \
+    Fisica/fisica.cpp \
+    Fisica/fisicacorriente.cpp \
+    Fisica/fisicasubmarina.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -21,6 +24,9 @@ HEADERS += \
     Entidades/jugador.h \
     Entidades/personaje.h \
     Entidades/proyectil.h \
+    Fisica/fisica.h \
+    Fisica/fisicacorriente.h \
+    Fisica/fisicasubmarina.h \
     mainwindow.h
 
 FORMS += \

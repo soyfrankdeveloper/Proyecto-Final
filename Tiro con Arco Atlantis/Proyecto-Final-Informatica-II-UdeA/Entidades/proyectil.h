@@ -21,6 +21,9 @@ public:
 
     void actualizar();
 
+    bool verificarColision(float objetivoX,
+                           float objetivoY);
+
     float getAngulo();
     float getVelocidadInicial();
 };

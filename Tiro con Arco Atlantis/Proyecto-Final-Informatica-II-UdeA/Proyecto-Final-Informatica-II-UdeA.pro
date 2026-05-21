@@ -15,6 +15,7 @@ SOURCES += \
     Fisica/fisica.cpp \
     Fisica/fisicacorriente.cpp \
     Fisica/fisicasubmarina.cpp \
+    IA/agenteinteligente.cpp \
     logica/juego.cpp \
     main.cpp \
     mainwindow.cpp
@@ -28,6 +29,7 @@ HEADERS += \
     Fisica/fisica.h \
     Fisica/fisicacorriente.h \
     Fisica/fisicasubmarina.h \
+    IA/agenteinteligente.h \
     logica/juego.h \
     mainwindow.h
 

@@ -29,10 +29,25 @@ void Proyectil::actualizar()
         tiempo);
 }
 
+bool Proyectil::verificarColision(float objetivoX,
+                                  float objetivoY)
+{
+    if(x >= objetivoX - 5 &&
+        x <= objetivoX + 5 &&
+        y >= objetivoY - 5 &&
+        y <= objetivoY + 5)
+    {
+        return true;
+    }
+
+    return false;
+}
+
 float Proyectil::getAngulo()
 {
     return angulo;
 }
+
 
 float Proyectil::getVelocidadInicial()
 {

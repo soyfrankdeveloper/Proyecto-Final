@@ -7,13 +7,18 @@
 #include "../entidades/enemigo.h"
 #include "../entidades/proyectil.h"
 
+#include "../IA/agenteinteligente.h"
+
 using namespace std;
 
 class Juego
 {
 private:
     Jugador jugador;
+
     Enemigo enemigo;
+
+    AgenteInteligente agenteIA;
 
     vector<Proyectil*> proyectiles;
 

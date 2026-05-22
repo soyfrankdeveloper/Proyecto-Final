@@ -16,9 +16,15 @@ SOURCES += \
     Fisica/fisicacorriente.cpp \
     Fisica/fisicasubmarina.cpp \
     IA/agenteinteligente.cpp \
+    Nivel/nivel.cpp \
+    Nivel/nivel1.cpp \
+    Nivel/nivel2.cpp \
     logica/juego.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    nivel.cpp \
+    nivel1.cpp \
+    nivel2.cpp
 
 HEADERS += \
     Entidades/enemigo.h \
@@ -30,8 +36,14 @@ HEADERS += \
     Fisica/fisicacorriente.h \
     Fisica/fisicasubmarina.h \
     IA/agenteinteligente.h \
+    Nivel/nivel.h \
+    Nivel/nivel1.h \
+    Nivel/nivel2.h \
     logica/juego.h \
-    mainwindow.h
+    mainwindow.h \
+    nivel.h \
+    nivel1.h \
+    nivel2.h
 
 FORMS += \
     mainwindow.ui

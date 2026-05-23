@@ -9,8 +9,8 @@ protected:
 
 public:
     Nivel();
-    virtual void iniciarNivel();
-    virtual void actualizarNivel();
+    void iniciarNivel();
+    void actualizarNivel();
     int getId();
     float getGravedad();
 };

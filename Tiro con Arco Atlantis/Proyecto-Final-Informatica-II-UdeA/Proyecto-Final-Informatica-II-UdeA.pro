@@ -15,10 +15,12 @@ SOURCES += \
     Fisica/fisica.cpp \
     Fisica/fisicacorriente.cpp \
     Fisica/fisicasubmarina.cpp \
+    HUD/hud.cpp \
     IA/agenteinteligente.cpp \
     Nivel/nivel.cpp \
     Nivel/nivel1.cpp \
     Nivel/nivel2.cpp \
+    hud.cpp \
     logica/juego.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -35,10 +37,12 @@ HEADERS += \
     Fisica/fisica.h \
     Fisica/fisicacorriente.h \
     Fisica/fisicasubmarina.h \
+    HUD/hud.h \
     IA/agenteinteligente.h \
     Nivel/nivel.h \
     Nivel/nivel1.h \
     Nivel/nivel2.h \
+    hud.h \
     logica/juego.h \
     mainwindow.h \
     nivel.h \

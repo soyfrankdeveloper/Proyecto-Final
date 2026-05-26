@@ -1,11 +1,11 @@
 #ifndef NIVEL1_H
 #define NIVEL1_H
-#include "nivel.h"
+#include "Nivel.h"
 
-class nivel1 : public Nivel
+class Nivel1 : public Nivel
 {
 public:
-    nivel1();
+    Nivel1();
     void configurarFisica();
     void iniciarNivel();
     void actualizarNivel();

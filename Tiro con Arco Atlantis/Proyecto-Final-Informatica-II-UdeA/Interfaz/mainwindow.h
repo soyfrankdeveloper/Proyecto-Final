@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+#include "logica/juego.h"
+#include "Interfaz/escenajuego.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -13,11 +16,17 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow() override;
-
 private:
     Ui::MainWindow *ui;
+
+    Juego juego;
+
+    EscenaJuego* escena;
+
+public:
+    MainWindow(QWidget *parent = nullptr);
+
+    ~MainWindow();
 };
+
 #endif // MAINWINDOW_H

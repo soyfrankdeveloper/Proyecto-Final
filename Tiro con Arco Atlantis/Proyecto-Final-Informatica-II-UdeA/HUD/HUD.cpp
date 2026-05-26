@@ -1,4 +1,4 @@
-#include "hud.h"
+#include "HUD.h"
 
 HUD::HUD() {
     vidas =3;

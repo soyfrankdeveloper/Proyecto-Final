@@ -1,11 +1,11 @@
 #ifndef NIVEL2_H
 #define NIVEL2_H
-#include "nivel.h"
+#include "Nivel.h"
 
-class nivel2 : public Nivel
+class Nivel2 : public Nivel
 {
 public:
-    nivel2();
+    Nivel2();
     void configurarCorrientes();
     void iniciarNivel();
     void actualizarNivel();

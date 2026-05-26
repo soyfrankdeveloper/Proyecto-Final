@@ -2,10 +2,6 @@ QT += widgets
 
 CONFIG += c++17
 
-# You can make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-
 SOURCES += \
     Entidades/enemigo.cpp \
     Entidades/entidad.cpp \
@@ -15,18 +11,15 @@ SOURCES += \
     Fisica/fisica.cpp \
     Fisica/fisicacorriente.cpp \
     Fisica/fisicasubmarina.cpp \
-    HUD/hud.cpp \
+    HUD/HUD.cpp \
     IA/agenteinteligente.cpp \
-    Nivel/nivel.cpp \
-    Nivel/nivel1.cpp \
-    Nivel/nivel2.cpp \
-    hud.cpp \
+    Interfaz/escenajuego.cpp \
+    Nivel/Nivel.cpp \
+    Nivel/Nivel1.cpp \
+    Nivel/Nivel2.cpp \
     logica/juego.cpp \
     main.cpp \
-    mainwindow.cpp \
-    nivel.cpp \
-    nivel1.cpp \
-    nivel2.cpp
+    Interfaz/mainwindow.cpp
 
 HEADERS += \
     Entidades/enemigo.h \
@@ -37,20 +30,17 @@ HEADERS += \
     Fisica/fisica.h \
     Fisica/fisicacorriente.h \
     Fisica/fisicasubmarina.h \
-    HUD/hud.h \
+    HUD/HUD.h \
     IA/agenteinteligente.h \
-    Nivel/nivel.h \
-    Nivel/nivel1.h \
-    Nivel/nivel2.h \
-    hud.h \
+    Interfaz/escenajuego.h \
+    Nivel/Nivel.h \
+    Nivel/Nivel1.h \
+    Nivel/Nivel2.h \
     logica/juego.h \
-    mainwindow.h \
-    nivel.h \
-    nivel1.h \
-    nivel2.h
+    Interfaz/mainwindow.h
 
 FORMS += \
-    mainwindow.ui
+    Interfaz/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

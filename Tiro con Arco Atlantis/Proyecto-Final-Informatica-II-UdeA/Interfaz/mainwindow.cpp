@@ -6,6 +6,16 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    resize(1000,700);
+
+    juego.iniciarJuego();
+
+    escena = new EscenaJuego();
+
+    escena->inicializarEscena();
+
+    ui->graphicsView->setScene(escena);
 }
 
 MainWindow::~MainWindow()

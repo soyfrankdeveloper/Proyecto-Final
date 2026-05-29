@@ -23,6 +23,7 @@ private:
     vector<Proyectil*> proyectiles;
 
 public:
+
     Juego();
 
     void iniciarJuego();
@@ -33,6 +34,8 @@ public:
     void actualizarJuego();
 
     int cantidadProyectiles();
+
+    vector<Proyectil*>& getProyectiles();
 };
 
 #endif // JUEGO_H

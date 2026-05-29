@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     escena->inicializarEscena();
 
     ui->graphicsView->setScene(escena);
+
+    ui->graphicsView->setFocus();
 }
 
 MainWindow::~MainWindow()

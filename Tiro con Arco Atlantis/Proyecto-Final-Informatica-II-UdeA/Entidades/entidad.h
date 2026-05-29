@@ -9,6 +9,9 @@ protected:
     float y;
     float velocidad;
 
+    float ancho;
+    float alto;
+
 public:
     Entidad();
 

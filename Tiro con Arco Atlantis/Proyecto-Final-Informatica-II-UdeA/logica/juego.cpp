@@ -49,3 +49,9 @@ int Juego::cantidadProyectiles()
 {
     return proyectiles.size();
 }
+
+vector<Proyectil*>& Juego::getProyectiles()
+{
+    return proyectiles;
+}
+

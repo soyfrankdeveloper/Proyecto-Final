@@ -36,6 +36,8 @@ public:
     int cantidadProyectiles();
 
     vector<Proyectil*>& getProyectiles();
+
+    int getVidasEnemigo();
 };
 
 #endif // JUEGO_H

@@ -10,21 +10,28 @@ float Fisica::calcularPosicionX(float velocidad,
                                 float angulo,
                                 float tiempo)
 {
-    float radianes;
+    float anguloRadianes;
 
-    radianes = angulo * 3.1416 / 180;
+    anguloRadianes = angulo * 3.1416 / 180.0;
 
-    return velocidad * cos(radianes) * tiempo;
+    return velocidad *
+           cos(anguloRadianes) *
+           tiempo;
 }
 
 float Fisica::calcularPosicionY(float velocidad,
                                 float angulo,
                                 float tiempo)
 {
-    float radianes;
+    float anguloRadianes;
 
-    radianes = angulo * 3.1416 / 180;
+    anguloRadianes = angulo * 3.1416 / 180.0;
 
-    return velocidad * sin(radianes) * tiempo
-           - 0.5 * gravedad * tiempo * tiempo;
+    return velocidad *
+               sin(anguloRadianes) *
+               tiempo
+           - 0.5 *
+                 gravedad *
+                 tiempo *
+                 tiempo;
 }

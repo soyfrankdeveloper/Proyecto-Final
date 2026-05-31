@@ -18,6 +18,10 @@ private:
 
     QGraphicsRectItem* enemigoItem;
 
+    QGraphicsTextItem* textoPotencia;
+
+    QGraphicsTextItem* textoVidaEnemigo;
+
     Juego juego;
 
     vector<QGraphicsRectItem*> proyectilesItems;

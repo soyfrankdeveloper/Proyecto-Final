@@ -8,6 +8,7 @@ class Jugador : public Personaje
 {
 private:
     float angulo;
+    float potencia;
 
 public:
     Jugador();
@@ -15,6 +16,10 @@ public:
     void apuntar(float angulo);
 
     float getAngulo();
+
+    void setPotencia(float potencia);
+
+    float getPotencia();
 };
 
 #endif // JUGADOR_H

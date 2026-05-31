@@ -8,34 +8,41 @@ Proyectil::Proyectil()
 }
 
 void Proyectil::lanzar(float nuevaVelocidad,
-                       float nuevoAngulo)
+                       float nuevoAngulo,
+                       float nuevaX,
+                       float nuevaY)
 {
     velocidadInicial = nuevaVelocidad;
     angulo = nuevoAngulo;
+
+    xInicial = nuevaX;
+    yInicial = nuevaY;
 }
 
 void Proyectil::actualizar()
 {
     tiempo += 0.1;
 
-    x = fisica.calcularPosicionX(
-        velocidadInicial,
-        angulo,
-        tiempo);
+    x = xInicial +
+        fisica.calcularPosicionX(
+            velocidadInicial,
+            angulo,
+            tiempo);
 
-    y = fisica.calcularPosicionY(
-        velocidadInicial,
-        angulo,
-        tiempo);
+    y = yInicial +
+        fisica.calcularPosicionY(
+            velocidadInicial,
+            angulo,
+            tiempo);
 }
 
 bool Proyectil::verificarColision(float objetivoX,
                                   float objetivoY)
 {
-    if(x >= objetivoX - 5 &&
-        x <= objetivoX + 5 &&
-        y >= objetivoY - 5 &&
-        y <= objetivoY + 5)
+    if(x >= objetivoX &&
+        x <= objetivoX + 50 &&
+        y >= objetivoY &&
+        y <= objetivoY + 50)
     {
         return true;
     }

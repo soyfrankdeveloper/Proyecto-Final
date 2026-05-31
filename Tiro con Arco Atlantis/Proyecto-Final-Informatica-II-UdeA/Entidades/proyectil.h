@@ -13,11 +13,16 @@ private:
 
     Fisica fisica;
 
+    float xInicial;
+    float yInicial;
+
 public:
     Proyectil();
 
     void lanzar(float nuevaVelocidad,
-                float nuevoAngulo);
+                float nuevoAngulo,
+                float nuevaX,
+                float nuevaY);
 
     void actualizar();
 

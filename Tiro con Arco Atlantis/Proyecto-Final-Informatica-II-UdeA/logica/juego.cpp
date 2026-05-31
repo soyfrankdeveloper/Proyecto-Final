@@ -1,5 +1,6 @@
 #include "juego.h"
 
+
 Juego::Juego()
 {
 
@@ -7,9 +8,9 @@ Juego::Juego()
 
 void Juego::iniciarJuego()
 {
-    jugador.setPosicion(0, 0);
+    jugador.setPosicion(150, 200);
 
-    enemigo.setPosicion(100, 0);
+    enemigo.setPosicion(800,100);
 }
 
 void Juego::crearProyectil(float velocidad,
@@ -19,9 +20,18 @@ void Juego::crearProyectil(float velocidad,
 
     nuevoProyectil = new Proyectil();
 
-    nuevoProyectil->lanzar(velocidad, angulo);
+    nuevoProyectil->setPosicion(
+        jugador.getX(),
+        jugador.getY());
 
-    proyectiles.push_back(nuevoProyectil);
+    nuevoProyectil->lanzar(
+        velocidad,
+        angulo,
+        jugador.getX(),
+        jugador.getY());
+
+    proyectiles.push_back(
+        nuevoProyectil);
 }
 
 void Juego::actualizarJuego()
@@ -34,9 +44,18 @@ void Juego::actualizarJuego()
                 enemigo.getX(),
                 enemigo.getY()))
         {
+
             enemigo.recibirDanio(1);
+
+            delete proyectiles[i];
+
+            proyectiles.erase(
+                proyectiles.begin() + i);
+
+            i--;
         }
     }
+
 
     agenteIA.percibir(jugador);
 
@@ -54,4 +73,10 @@ vector<Proyectil*>& Juego::getProyectiles()
 {
     return proyectiles;
 }
+
+int Juego::getVidasEnemigo()
+{
+    return enemigo.getVidas();
+}
+
 

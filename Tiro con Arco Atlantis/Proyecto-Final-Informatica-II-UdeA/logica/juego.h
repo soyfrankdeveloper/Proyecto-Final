@@ -22,6 +22,12 @@ private:
 
     vector<Proyectil*> proyectiles;
 
+    bool turnoJugador;
+
+    bool enemigoYaDisparo;
+
+    int vidasJugador;
+
 public:
 
     Juego();
@@ -29,7 +35,8 @@ public:
     void iniciarJuego();
 
     void crearProyectil(float velocidad,
-                        float angulo);
+                        float angulo,
+                        bool delJugador);
 
     void actualizarJuego();
 
@@ -38,6 +45,15 @@ public:
     vector<Proyectil*>& getProyectiles();
 
     int getVidasEnemigo();
+
+    float getEnemigoX();
+    float getEnemigoY();
+
+    bool getTurnoJugador();
+
+    int getVidasJugador();
+
+    void dispararEnemigo();
 };
 
 #endif // JUEGO_H

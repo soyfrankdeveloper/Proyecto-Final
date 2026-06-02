@@ -22,6 +22,8 @@ private:
 
     QGraphicsTextItem* textoVidaEnemigo;
 
+    QGraphicsTextItem* textoVictoria;
+
     Juego juego;
 
     vector<QGraphicsRectItem*> proyectilesItems;

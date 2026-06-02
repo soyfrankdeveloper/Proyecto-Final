@@ -1,9 +1,12 @@
 #include "juego.h"
 
-
 Juego::Juego()
 {
+    turnoJugador = true;
 
+    enemigoYaDisparo = false;
+
+    vidasJugador = 3;
 }
 
 void Juego::iniciarJuego()
@@ -14,24 +17,43 @@ void Juego::iniciarJuego()
 }
 
 void Juego::crearProyectil(float velocidad,
-                           float angulo)
+                           float angulo,
+                           bool delJugador)
 {
     Proyectil* nuevoProyectil;
 
     nuevoProyectil = new Proyectil();
 
-    nuevoProyectil->setPosicion(
-        jugador.getX(),
-        jugador.getY());
+    if(delJugador)
+    {
+        nuevoProyectil->lanzar(
+            velocidad,
+            angulo,
+            jugador.getX(),
+            jugador.getY());
+    }
+    else
+    {
+        nuevoProyectil->lanzar(
+            velocidad,
+            angulo,
+            enemigo.getX(),
+            enemigo.getY());
+    }
 
-    nuevoProyectil->lanzar(
-        velocidad,
-        angulo,
-        jugador.getX(),
-        jugador.getY());
+    nuevoProyectil->setDelJugador(
+        delJugador);
 
     proyectiles.push_back(
         nuevoProyectil);
+}
+
+void Juego::dispararEnemigo()
+{
+    crearProyectil(
+        50,
+        135,
+        false);
 }
 
 void Juego::actualizarJuego()
@@ -40,22 +62,50 @@ void Juego::actualizarJuego()
     {
         proyectiles[i]->actualizar();
 
-        if(proyectiles[i]->verificarColision(
-                enemigo.getX(),
-                enemigo.getY()))
+        if(proyectiles[i]->getY() < 0)
         {
-
-            enemigo.recibirDanio(1);
-
             delete proyectiles[i];
 
             proyectiles.erase(
                 proyectiles.begin() + i);
 
+            if(!enemigoYaDisparo)
+            {
+                dispararEnemigo();
+
+                enemigoYaDisparo = true;
+            }
+            else
+            {
+                turnoJugador = true;
+
+                enemigoYaDisparo = false;
+            }
+
             i--;
+
+            continue;
+        }
+
+        if(proyectiles[i]->getDelJugador())
+        {
+            if(proyectiles[i]->verificarColision(
+                    enemigo.getX(),
+                    enemigo.getY()))
+            {
+                enemigo.recibirDanio(1);
+
+                delete proyectiles[i];
+
+                proyectiles.erase(
+                    proyectiles.begin() + i);
+
+                turnoJugador = true;
+
+                i--;
+            }
         }
     }
-
 
     agenteIA.percibir(jugador);
 
@@ -63,6 +113,14 @@ void Juego::actualizarJuego()
 
     agenteIA.actuar(enemigo);
 }
+
+
+
+bool Juego::getTurnoJugador()
+{
+    return turnoJugador;
+}
+
 
 int Juego::cantidadProyectiles()
 {
@@ -77,6 +135,21 @@ vector<Proyectil*>& Juego::getProyectiles()
 int Juego::getVidasEnemigo()
 {
     return enemigo.getVidas();
+}
+
+float Juego::getEnemigoX()
+{
+    return enemigo.getX();
+}
+
+float Juego::getEnemigoY()
+{
+    return enemigo.getY();
+}
+
+int Juego::getVidasJugador()
+{
+    return vidasJugador;
 }
 
 

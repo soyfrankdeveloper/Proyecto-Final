@@ -60,3 +60,13 @@ float Proyectil::getVelocidadInicial()
 {
     return velocidadInicial;
 }
+
+void Proyectil::setDelJugador(bool valor)
+{
+    delJugador = valor;
+}
+
+bool Proyectil::getDelJugador()
+{
+    return delJugador;
+}

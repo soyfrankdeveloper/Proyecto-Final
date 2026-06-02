@@ -16,6 +16,8 @@ private:
     float xInicial;
     float yInicial;
 
+    bool delJugador;
+
 public:
     Proyectil();
 
@@ -31,6 +33,10 @@ public:
 
     float getAngulo();
     float getVelocidadInicial();
+
+    void setDelJugador(bool valor);
+
+    bool getDelJugador();
 };
 
 #endif // PROYECTIL_H

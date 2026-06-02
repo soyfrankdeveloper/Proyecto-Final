@@ -47,6 +47,9 @@ void EscenaJuego::actualizarEscena()
     if(juego.getVidasEnemigo() <= 0)
     {
         enemigoItem->hide();
+
+        textoVictoria->setPlainText(
+            "¡VICTORIA!");
     }
 }
 
@@ -59,6 +62,10 @@ void EscenaJuego::inicializarEscena()
     jugadorItem = addRect(100,400,50,50);
 
     enemigoItem = addRect(800, 400,50,50);
+
+    textoVictoria = addText("");
+
+    textoVictoria->setPos(400,200);
 
 
     jugador.apuntar(45);
@@ -98,9 +105,13 @@ void EscenaJuego::keyPressEvent(QKeyEvent *event)
 
     if(event->key() == Qt::Key_Space)
     {
-        juego.crearProyectil(
-            jugador.getPotencia(),
-            jugador.getAngulo());
+        if(juego.getTurnoJugador())
+        {
+            juego.crearProyectil(
+                jugador.getPotencia(),
+                jugador.getAngulo(),
+                true);
+        }
     }
 
     if(event->key() == Qt::Key_Right)

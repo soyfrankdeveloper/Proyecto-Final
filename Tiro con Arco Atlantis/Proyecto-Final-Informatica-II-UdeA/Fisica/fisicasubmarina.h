@@ -11,6 +11,10 @@ private:
 public:
     FisicaSubmarina();
 
+
+    /*la version que propongo para la sobreescritura del metodo virtual sería la sgte
+     virtual float aplicarEfectosEspecial(float valorBase, float tiempo);*/
+
     float aplicarResistencia(float velocidadInicial,
                              float tiempo);
 };

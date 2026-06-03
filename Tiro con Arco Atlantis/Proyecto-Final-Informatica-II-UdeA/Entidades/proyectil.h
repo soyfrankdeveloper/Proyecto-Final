@@ -3,6 +3,7 @@
 
 #include "entidad.h"
 #include "../Fisica/fisica.h"
+#include "../Fisica/fisicasubmarina.h"
 
 class Proyectil : public Entidad
 {

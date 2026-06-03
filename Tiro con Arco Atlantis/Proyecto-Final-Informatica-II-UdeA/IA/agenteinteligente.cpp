@@ -1,36 +1,88 @@
 #include "agenteinteligente.h"
+#include <cmath>
 
 AgenteInteligente::AgenteInteligente()
 {
     jugadorDetectado = false;
     proyectilCercano = false;
+
+    anguloDisparo = 135;
+
+    potenciaDisparo = 50;
+
+    posicionJugadorX = 0;
+
+    disparosFallidos = 0;
 }
 
 void AgenteInteligente::percibir(Jugador jugador)
 {
-    if(jugador.getX() >= 0)
-    {
-        jugadorDetectado = true;
-    }
+    posicionJugadorX =
+        jugador.getX();
+
+    jugadorDetectado = true;
 }
 
-void AgenteInteligente::decidir(Enemigo& enemigo)
+void AgenteInteligente::decidir(
+    Enemigo& enemigo)
 {
-    if(jugadorDetectado)
+    float distancia;
+
+    distancia =
+        enemigo.getX() -
+        posicionJugadorX;
+
+    if(distancia > 500)
     {
-        enemigo.tomarDecision();
+        potenciaDisparo =
+            100 + disparosFallidos * 5;
+
+        anguloDisparo =
+            135 + disparosFallidos;
+    }
+    else
+    {
+        potenciaDisparo = 90;
+        anguloDisparo = 130;
     }
 }
 
 void AgenteInteligente::actuar(Enemigo& enemigo)
 {
-    if(proyectilCercano)
-    {
-        enemigo.esquivar();
-    }
+
 }
 
 bool AgenteInteligente::getJugadorDetectado()
 {
     return jugadorDetectado;
+}
+
+void AgenteInteligente::detectarProyectil(
+    float proyectilX,
+    float enemigoX)
+{
+    if(abs(proyectilX - enemigoX) < 100)
+    {
+        proyectilCercano = true;
+    }
+    else
+    {
+        proyectilCercano = false;
+    }
+}
+
+float AgenteInteligente::getAnguloDisparo()
+{
+    return anguloDisparo;
+}
+
+float AgenteInteligente::getPotenciaDisparo()
+{
+    return potenciaDisparo;
+}
+
+void AgenteInteligente::registrarFallo()
+{
+    disparosFallidos++;
+
 }

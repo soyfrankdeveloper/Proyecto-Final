@@ -35,3 +35,8 @@ int Personaje::getPuntaje()
 {
     return puntaje;
 }
+
+void Personaje::sumarPuntos(int puntos)
+{
+    puntaje += puntos;
+}

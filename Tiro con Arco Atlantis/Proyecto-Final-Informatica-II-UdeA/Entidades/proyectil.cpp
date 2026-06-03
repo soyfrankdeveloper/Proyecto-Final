@@ -5,6 +5,10 @@ Proyectil::Proyectil()
     angulo = 0;
     velocidadInicial = 0;
     tiempo = 0;
+
+    fisica = new FisicaSubmarina();
+
+    delJugador = false;
 }
 
 void Proyectil::lanzar(float nuevaVelocidad,
@@ -23,15 +27,32 @@ void Proyectil::actualizar()
 {
     tiempo += 0.1;
 
+    float velocidadActual;
+
+    velocidadActual = velocidadInicial;
+
+    FisicaSubmarina* submarina;
+
+    submarina =
+        dynamic_cast<FisicaSubmarina*>(fisica);
+
+    if(submarina != nullptr)
+    {
+        velocidadActual =
+            submarina->aplicarResistencia(
+                velocidadInicial,
+                tiempo);
+    }
+
     x = xInicial +
-        fisica.calcularPosicionX(
-            velocidadInicial,
+        fisica->calcularPosicionX(
+            velocidadActual,
             angulo,
             tiempo);
 
     y = yInicial +
-        fisica.calcularPosicionY(
-            velocidadInicial,
+        fisica->calcularPosicionY(
+            velocidadActual,
             angulo,
             tiempo);
 }
@@ -39,10 +60,10 @@ void Proyectil::actualizar()
 bool Proyectil::verificarColision(float objetivoX,
                                   float objetivoY)
 {
-    if(x >= objetivoX &&
-        x <= objetivoX + 50 &&
-        y >= objetivoY &&
-        y <= objetivoY + 50)
+    if(x >= objetivoX - 15 &&
+        x <= objetivoX + 65 &&
+        y >= objetivoY - 15 &&
+        y <= objetivoY + 65)
     {
         return true;
     }

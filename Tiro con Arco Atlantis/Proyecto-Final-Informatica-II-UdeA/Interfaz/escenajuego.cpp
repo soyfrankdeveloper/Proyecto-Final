@@ -1,4 +1,4 @@
-#include "escenajuego.h"
+ #include "escenajuego.h"
 #include <QGraphicsRectItem>
 
 EscenaJuego::EscenaJuego(QObject *parent)
@@ -14,7 +14,14 @@ EscenaJuego::EscenaJuego(QObject *parent)
 
 void EscenaJuego::actualizarEscena()
 {
+
     juego.actualizarJuego();
+
+    enemigoItem->setRect(
+        juego.getEnemigoX(),
+        600 - juego.getEnemigoY(),
+        50,
+        50);
 
     vector<Proyectil*>& proyectiles =
         juego.getProyectiles();
@@ -44,12 +51,32 @@ void EscenaJuego::actualizarEscena()
         QString::number(
             juego.getVidasEnemigo()));
 
+    textoPuntaje->setPlainText(
+        "Puntaje: " +
+        QString::number(
+            juego.getPuntajeJugador()));
+
+    textoVidaJugador->setPlainText(
+        "Vida jugador: " +
+        QString::number(
+            juego.getVidasJugador()));
+
+
+
     if(juego.getVidasEnemigo() <= 0)
     {
         enemigoItem->hide();
 
         textoVictoria->setPlainText(
             "¡VICTORIA!");
+    }
+
+    if(juego.getVidasJugador() <= 0)
+    {
+        jugadorItem->hide();
+
+        textoVictoria->setPlainText(
+            "DERROTA");
     }
 }
 
@@ -81,6 +108,17 @@ void EscenaJuego::inicializarEscena()
     textoVidaEnemigo = addText("Vida enemigo: 3");
 
     textoVidaEnemigo->setPos(20,80);
+
+    textoPuntaje = addText("Puntaje: 0");
+
+    textoPuntaje->setPos(20,140);
+
+    textoVidaJugador = addText(
+        "Vida jugador: 3");
+
+    textoVidaJugador->setPos(
+        20,
+        110);
 }
 
 void EscenaJuego::keyPressEvent(QKeyEvent *event)
@@ -111,7 +149,10 @@ void EscenaJuego::keyPressEvent(QKeyEvent *event)
                 jugador.getPotencia(),
                 jugador.getAngulo(),
                 true);
+
         }
+
+
     }
 
     if(event->key() == Qt::Key_Right)

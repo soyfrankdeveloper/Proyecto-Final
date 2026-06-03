@@ -3,7 +3,7 @@
 
 FisicaSubmarina::FisicaSubmarina()
 {
-    resistencia = 0.2;
+    resistencia = 0.02;
 }
 
 /*aca valorBase representa una velocidad inicial a modificar

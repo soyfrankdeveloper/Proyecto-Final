@@ -9,6 +9,10 @@ class AgenteInteligente
 private:
     bool jugadorDetectado;
     bool proyectilCercano;
+    float anguloDisparo;
+    float potenciaDisparo;
+    int disparosFallidos;
+
 
 public:
     AgenteInteligente();
@@ -20,6 +24,17 @@ public:
     void actuar(Enemigo& enemigo);
 
     bool getJugadorDetectado();
+
+    float getAnguloDisparo();
+
+    float getPotenciaDisparo();
+
+    float posicionJugadorX;
+
+    void registrarFallo();
+
+    void detectarProyectil(float proyectilX,
+                           float enemigoX);
 };
 
 #endif // AGENTEINTELIGENTE_H

@@ -18,6 +18,8 @@ public:
 
     int getVidas();
     int getPuntaje();
+
+    void sumarPuntos(int puntos);
 };
 
 #endif // PERSONAJE_H

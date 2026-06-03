@@ -24,6 +24,10 @@ private:
 
     QGraphicsTextItem* textoVictoria;
 
+    QGraphicsTextItem* textoVidaJugador;
+
+    QGraphicsTextItem* textoPuntaje;
+
     Juego juego;
 
     vector<QGraphicsRectItem*> proyectilesItems;
@@ -41,6 +45,8 @@ public:
     void inicializarEscena();
 
     void actualizarEscena();
+
+    void sumarPuntos(int puntos);
 
     void keyPressEvent(QKeyEvent *event);
 

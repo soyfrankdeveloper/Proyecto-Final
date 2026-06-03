@@ -54,6 +54,8 @@ public:
     int getVidasJugador();
 
     void dispararEnemigo();
+
+    int getPuntajeJugador();
 };
 
 #endif // JUEGO_H

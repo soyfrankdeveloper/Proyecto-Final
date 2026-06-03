@@ -35,3 +35,10 @@ float Fisica::calcularPosicionY(float velocidad,
                  tiempo *
                  tiempo;
 }
+
+/*aplicamos el comportamiento por defecto del nivel 1, donde no alteramos los valores
+*/
+float Fisica::aplicarEfectoEspecial(float valorBase, float tiempo)
+{
+    return valorBase;
+}

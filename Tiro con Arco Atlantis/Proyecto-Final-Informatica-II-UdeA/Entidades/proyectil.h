@@ -11,7 +11,7 @@ private:
     float velocidadInicial;
     float tiempo;
 
-    Fisica fisica;
+    Fisica* fisica;     //hice que apuntara a fisicasubmarina en tiempo de ejecucion
 
     float xInicial;
     float yInicial;

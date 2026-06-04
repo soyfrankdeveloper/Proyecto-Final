@@ -11,12 +11,18 @@ private:
 public:
     FisicaCorriente();
 
-    float aplicarCorriente(float posicionX,
-                           float tiempo);
+    //float aplicarCorriente(float posicionX,
+     //                      float tiempo);
 
 
-    /*aca dejo una sobrescritura para el metodo virtual
-     virtual float aplicarEfectoEspecial(float valorBase, float tiempo);*/
+    /*aplicarEfectoEspecial recibe una posicionX base, y nos retorna una posicion desviadad por la corriente marina*/
+     virtual float aplicarEfectoEspecial(float valorBase,
+                                         float tiempo);
+
+     //sobreescribimos solo en x puesto que la corriente afecta unicamente el eje horizontal
+     virtual float calcularPosicionX(float velocidad,
+                                     float angulo,
+                                     float tiempo);
 };
 
 #endif // FISICACORRIENTE_H

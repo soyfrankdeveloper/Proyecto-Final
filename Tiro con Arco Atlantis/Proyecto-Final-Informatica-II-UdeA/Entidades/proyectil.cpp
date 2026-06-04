@@ -1,4 +1,5 @@
 #include "proyectil.h"
+#include "../Fisica/fisicaSubmarina.h"
 
 Proyectil::Proyectil()
 {
@@ -9,6 +10,17 @@ Proyectil::Proyectil()
     fisica = new FisicaSubmarina();
 
     delJugador = false;
+}
+Proyectil::~Proyectil()//un destructor para que libere la fisica asignada
+{
+    delete fisica;
+}
+
+//nos permite asignar otra fisica desde juego(nivel2)
+void Proyectil::setFisica(Fisica*nuevaFisica)
+{
+    delete fisica;
+    fisica= nuevaFisica;
 }
 
 void Proyectil::lanzar(float nuevaVelocidad,
@@ -27,32 +39,32 @@ void Proyectil::actualizar()
 {
     tiempo += 0.1;
 
-    float velocidadActual;
+    // float velocidadActual;
 
-    velocidadActual = velocidadInicial;
+    // velocidadActual = velocidadInicial;
 
-    FisicaSubmarina* submarina;
+    // FisicaSubmarina* submarina;
 
-    submarina =
-        dynamic_cast<FisicaSubmarina*>(fisica);
+    // submarina =
+    //     dynamic_cast<FisicaSubmarina*>(fisica);
 
-    if(submarina != nullptr)
-    {
-        velocidadActual =
-            submarina->aplicarResistencia(
-                velocidadInicial,
-                tiempo);
-    }
+    // if(submarina != nullptr)
+    // {
+    //     velocidadActual =
+    //         submarina->aplicarResistencia(
+    //             velocidadInicial,
+    //             tiempo);
+    // }
 
     x = xInicial +
         fisica->calcularPosicionX(
-            velocidadActual,
+            velocidadinicial,
             angulo,
             tiempo);
 
     y = yInicial +
         fisica->calcularPosicionY(
-            velocidadActual,
+            velocidadinicial,
             angulo,
             tiempo);
 }

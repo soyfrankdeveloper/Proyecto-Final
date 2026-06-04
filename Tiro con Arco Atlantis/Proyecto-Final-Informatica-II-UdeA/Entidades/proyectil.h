@@ -21,6 +21,9 @@ private:
 
 public:
     Proyectil();
+    ~Proyectil();       //destructor
+
+    void setFisica(Fisica* nuevaFisica)//cambia la fisica en tiempo de ejecucion
 
     void lanzar(float nuevaVelocidad,
                 float nuevoAngulo,

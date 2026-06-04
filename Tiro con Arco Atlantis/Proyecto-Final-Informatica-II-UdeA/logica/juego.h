@@ -6,6 +6,7 @@
 #include "../entidades/jugador.h"
 #include "../entidades/enemigo.h"
 #include "../entidades/proyectil.h"
+#include "../entidades/obstaculo.h"
 
 #include "../IA/agenteinteligente.h"
 
@@ -27,6 +28,9 @@ private:
     bool enemigoYaDisparo;
 
     int vidasJugador;
+
+    vector<Obstaculo*> obstaculos;
+
 
 public:
 
@@ -56,6 +60,8 @@ public:
     void dispararEnemigo();
 
     int getPuntajeJugador();
+
+    vector<Obstaculo*>& getObstaculos();
 };
 
 #endif // JUEGO_H

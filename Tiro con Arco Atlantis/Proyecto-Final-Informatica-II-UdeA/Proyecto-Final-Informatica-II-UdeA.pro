@@ -6,6 +6,7 @@ SOURCES += \
     Entidades/enemigo.cpp \
     Entidades/entidad.cpp \
     Entidades/jugador.cpp \
+    Entidades/obstaculo.cpp \
     Entidades/personaje.cpp \
     Entidades/proyectil.cpp \
     Fisica/fisica.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     Entidades/enemigo.h \
     Entidades/entidad.h \
     Entidades/jugador.h \
+    Entidades/obstaculo.h \
     Entidades/personaje.h \
     Entidades/proyectil.h \
     Fisica/fisica.h \

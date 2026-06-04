@@ -6,6 +6,7 @@
 #include <QGraphicsTextItem>
 #include <QKeyEvent>
 #include "../logica/juego.h"
+#include "../entidades/obstaculo.h"
 
 #include <vector>
 #include <QTimer>
@@ -27,6 +28,8 @@ private:
     QGraphicsTextItem* textoVidaJugador;
 
     QGraphicsTextItem* textoPuntaje;
+
+    vector<QGraphicsRectItem*> obstaculosItems;
 
     Juego juego;
 

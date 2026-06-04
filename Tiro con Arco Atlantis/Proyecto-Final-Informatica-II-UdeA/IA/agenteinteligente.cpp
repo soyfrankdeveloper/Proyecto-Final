@@ -35,14 +35,15 @@ void AgenteInteligente::decidir(
     if(distancia > 500)
     {
         potenciaDisparo =
-            100 + disparosFallidos * 5;
+            100 + disparosFallidos * 10;
 
         anguloDisparo =
-            135 + disparosFallidos;
+            135 + disparosFallidos * 2;
     }
+
     else
     {
-        potenciaDisparo = 90;
+        potenciaDisparo = 130;
         anguloDisparo = 130;
     }
 }

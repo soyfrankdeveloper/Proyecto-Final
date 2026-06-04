@@ -28,6 +28,17 @@ void EscenaJuego::actualizarEscena()
 
     proyectiles = juego.getProyectiles();
 
+    while(proyectilesItems.size() >
+           proyectiles.size())
+    {
+        removeItem(
+            proyectilesItems.back());
+
+        delete proyectilesItems.back();
+
+        proyectilesItems.pop_back();
+    }
+
     while(proyectilesItems.size() < proyectiles.size())
     {
         QGraphicsRectItem* nuevoItem;
@@ -78,6 +89,47 @@ void EscenaJuego::actualizarEscena()
         textoVictoria->setPlainText(
             "DERROTA");
     }
+
+    vector<Obstaculo*>& obstaculos =
+        juego.getObstaculos();
+
+    while(obstaculosItems.size() >
+           obstaculos.size())
+    {
+        removeItem(
+            obstaculosItems.back());
+
+        delete obstaculosItems.back();
+
+        obstaculosItems.pop_back();
+    }
+
+    while(obstaculosItems.size() <
+           obstaculos.size())
+    {
+        QGraphicsRectItem* nuevo;
+
+        nuevo = addRect(
+            0,
+            0,
+            30,
+            30);
+
+        obstaculosItems.push_back(
+            nuevo);
+    }
+
+    for(unsigned int i = 0;
+         i < obstaculos.size();
+         i++)
+    {
+        obstaculosItems[i]->setRect(
+            obstaculos[i]->getX(),
+            600 - obstaculos[i]->getY(),
+            30,
+            30);
+    }
+
 }
 
 void EscenaJuego::inicializarEscena()

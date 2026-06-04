@@ -69,9 +69,50 @@ void Juego::dispararEnemigo()
 
 void Juego::actualizarJuego()
 {
-    for(unsigned int i = 0; i < proyectiles.size(); i++)
+    for(int i = 0; i < proyectiles.size(); i++)
     {
         proyectiles[i]->actualizar();
+
+        bool proyectilEliminado = false;
+
+        for(unsigned int j = 0;
+             j < obstaculos.size();
+             j++)
+        {
+            if(obstaculos[j]->verificarColision(
+                    proyectiles[i]->getX(),
+                    proyectiles[i]->getY()))
+            {
+                delete proyectiles[i];
+
+                proyectiles.erase(
+                    proyectiles.begin() + i);
+
+                proyectilEliminado = true;
+
+                break;
+            }
+        }
+
+        if(proyectilEliminado)
+        {
+            if(!enemigoYaDisparo)
+            {
+                dispararEnemigo();
+
+                enemigoYaDisparo = true;
+            }
+            else
+            {
+                turnoJugador = true;
+
+                enemigoYaDisparo = false;
+            }
+
+            i--;
+
+            continue;
+        }
 
         if(proyectiles[i]->getY() < 0 ||
             proyectiles[i]->getX() > 1200 ||
@@ -144,7 +185,7 @@ void Juego::actualizarJuego()
                 if(vidasJugador > 0)
                 {
                     vidasJugador--;
-                };
+                }
 
                 delete proyectiles[i];
 
@@ -152,11 +193,9 @@ void Juego::actualizarJuego()
                     proyectiles.begin() + i);
 
                 turnoJugador = true;
-
                 enemigoYaDisparo = false;
 
                 i--;
-
                 continue;
             }
         }
@@ -167,6 +206,34 @@ void Juego::actualizarJuego()
     agenteIA.decidir(enemigo);
 
     agenteIA.actuar(enemigo);
+
+    static int contador = 0;
+
+    contador++;
+
+    if(contador >= 100)
+    {
+        obstaculos.push_back(
+            new Obstaculo());
+
+        contador = 0;
+    }
+
+    for(unsigned int i = 0;
+         i < obstaculos.size();
+         i++)
+    {
+        obstaculos[i]->actualizar();
+
+        if(obstaculos[i]->fueraDePantalla())
+        {
+            delete obstaculos[i];
+
+            obstaculos[i] =
+                new Obstaculo();
+        }
+    }
+
 }
 
 
@@ -210,6 +277,11 @@ int Juego::getVidasJugador()
 int Juego::getPuntajeJugador()
 {
     return jugador.getPuntaje();
+}
+
+vector<Obstaculo*>& Juego::getObstaculos()
+{
+    return obstaculos;
 }
 
 

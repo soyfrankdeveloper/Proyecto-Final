@@ -58,13 +58,13 @@ void Proyectil::actualizar()
 
     x = xInicial +
         fisica->calcularPosicionX(
-            velocidadinicial,
+            velocidadInicial,
             angulo,
             tiempo);
 
     y = yInicial +
         fisica->calcularPosicionY(
-            velocidadinicial,
+            velocidadInicial,
             angulo,
             tiempo);
 }

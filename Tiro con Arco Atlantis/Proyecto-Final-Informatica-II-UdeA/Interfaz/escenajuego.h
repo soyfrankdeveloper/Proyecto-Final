@@ -53,6 +53,16 @@ private:
 
     bool fondoNivel2Cargado;
 
+    //agregamos las animaciones
+    int frameJugador;
+    int frameEnemigo;
+    int contadorAnimacion;
+    int totalFramesJugador;
+    int totalFramesEnemigo;
+    QPixmap spriteSheetJugador;
+    QPixmap spriteSheetEnemigo;
+
+
 public:
 
     EscenaJuego(QObject *parent = nullptr);

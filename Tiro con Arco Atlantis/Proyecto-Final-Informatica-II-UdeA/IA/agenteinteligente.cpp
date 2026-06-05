@@ -1,5 +1,7 @@
 #include "agenteinteligente.h"
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 
 AgenteInteligente::AgenteInteligente()
 {
@@ -13,7 +15,21 @@ AgenteInteligente::AgenteInteligente()
     posicionJugadorX = 0;
 
     disparosFallidos = 0;
+
+    variacionAngulo = 0;        //inicializamos la variacion de angulo en 0
+
+    variacionPotencia = 0;      //inicializamos la variacion de potencia en 0
+
+    srand(time(0));     //inicializamos con time pq el rand solito nos da siempre la misma secuencia, el ctime cambia cada segundo, xd
 }
+
+/*generamos una variacion aleatoria*/
+void AgenteInteligente::calcularVariacion()
+{
+    variacionAngulo=(rand()%31)-15;
+    variacionPotencia =(rand()%41)-20;
+}
+
 
 void AgenteInteligente::percibir(Jugador jugador)
 {
@@ -26,30 +42,48 @@ void AgenteInteligente::percibir(Jugador jugador)
 void AgenteInteligente::decidir(
     Enemigo& enemigo)
 {
-    float distancia;
-
-    distancia =
+    float distancia =
         enemigo.getX() -
         posicionJugadorX;
 
+    //le pedimos que calcule una nueva variacion para cada disparo
+    calcularVariacion();
+
     if(distancia > 500)
     {
+        //lejos del jugaror va ajustando con fallidos + variacion
         potenciaDisparo =
-            100 + disparosFallidos * 10;
+            100 + disparosFallidos * 10+
+        variacionPotencia;
 
         anguloDisparo =
-            135 + disparosFallidos * 2;
+            135 + disparosFallidos * 2+
+        variacionAngulo;
     }
 
     else
     {
-        potenciaDisparo = 130;
-        anguloDisparo = 130;
+        /*cerca del jugador lo ponemos mas preciso pero con variaciones
+        la variacion se reduce a la mitad para que tenga mayor dificultad
+        */
+        potenciaDisparo = 130+ variacionPotencia/2;
+        anguloDisparo = 130+variacionAngulo/2;
     }
+    //le pedimos que el angulo no pueda salirse dentro de los rangos logicos
+    if(anguloDisparo <100)anguloDisparo=100;
+    if(anguloDisparo>170)anguloDisparo=170;
+
+    //la potencia tampoco puede ser negativa o absurda
+    if(potenciaDisparo<50) potenciaDisparo=50;
+    if(potenciaDisparo>200)potenciaDisparo=200;
 }
 
 void AgenteInteligente::actuar(Enemigo& enemigo)
 {
+    if(proyectilCercano)
+    {
+        enemigo.esquivar();
+    }
 
 }
 

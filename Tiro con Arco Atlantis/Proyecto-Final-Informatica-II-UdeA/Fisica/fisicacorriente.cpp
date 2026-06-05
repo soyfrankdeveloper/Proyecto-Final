@@ -29,7 +29,7 @@ la flecha es empujada por la corriente horizontalmente*/
 float FisicaCorriente::calcularPosicionX(float velocidad, float angulo, float tiempo)
 {
     float anguloRad = angulo *3.1416/180.0;
-    float posicionBase = velocidad*cos(anguloRadX)tiempo;
+    float posicionBase = velocidad*cos(anguloRad)*tiempo;
 
     return aplicarEfectoEspecial(posicionBase,tiempo);
 }

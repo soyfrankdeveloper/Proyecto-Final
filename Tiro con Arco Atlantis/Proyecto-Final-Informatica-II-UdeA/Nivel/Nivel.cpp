@@ -21,3 +21,8 @@ float Nivel::getGravedad()
 {
     return gravedad;
 }
+
+Fisica* Nivel::crearFisica()
+{
+    return new Fisica();
+}

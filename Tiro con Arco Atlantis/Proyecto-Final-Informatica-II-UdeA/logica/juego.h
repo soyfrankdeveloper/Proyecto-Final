@@ -7,6 +7,9 @@
 #include "../entidades/enemigo.h"
 #include "../entidades/proyectil.h"
 #include "../entidades/obstaculo.h"
+#include "../Nivel/Nivel.h"
+#include "../Nivel/Nivel1.h"
+#include "../Nivel/Nivel2.h"
 
 #include "../IA/agenteinteligente.h"
 
@@ -30,6 +33,8 @@ private:
     int vidasJugador;
 
     vector<Obstaculo*> obstaculos;
+
+    Nivel* nivelActual;
 
 
 public:
@@ -62,6 +67,8 @@ public:
     int getPuntajeJugador();
 
     vector<Obstaculo*>& getObstaculos();
+
+    ~Juego();
 };
 
 #endif // JUEGO_H

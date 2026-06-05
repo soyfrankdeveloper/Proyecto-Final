@@ -12,7 +12,6 @@ SOURCES += \
     Fisica/fisica.cpp \
     Fisica/fisicacorriente.cpp \
     Fisica/fisicasubmarina.cpp \
-    HUD/HUD.cpp \
     IA/agenteinteligente.cpp \
     Interfaz/escenajuego.cpp \
     Nivel/Nivel.cpp \
@@ -32,7 +31,6 @@ HEADERS += \
     Fisica/fisica.h \
     Fisica/fisicacorriente.h \
     Fisica/fisicasubmarina.h \
-    HUD/HUD.h \
     IA/agenteinteligente.h \
     Interfaz/escenajuego.h \
     Nivel/Nivel.h \
@@ -48,3 +46,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc

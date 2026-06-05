@@ -7,6 +7,28 @@ Juego::Juego()
     enemigoYaDisparo = false;
 
     vidasJugador = 3;
+
+    nivelActual = new Nivel2();
+}
+
+
+Juego::~Juego()
+{
+    for(unsigned int i = 0;
+         i < proyectiles.size();
+         i++)
+    {
+        delete proyectiles[i];
+    }
+
+    for(unsigned int i = 0;
+         i < obstaculos.size();
+         i++)
+    {
+        delete obstaculos[i];
+    }
+
+    delete nivelActual;
 }
 
 void Juego::iniciarJuego()
@@ -24,6 +46,9 @@ void Juego::crearProyectil(float velocidad,
     Proyectil* nuevoProyectil;
 
     nuevoProyectil = new Proyectil();
+
+    nuevoProyectil->setFisica(
+        nivelActual->crearFisica());
 
     if(delJugador)
     {
@@ -211,10 +236,14 @@ void Juego::actualizarJuego()
 
     contador++;
 
+
     if(contador >= 100)
     {
-        obstaculos.push_back(
-            new Obstaculo());
+        if(obstaculos.size() < 5)
+        {
+            obstaculos.push_back(
+                new Obstaculo());
+        }
 
         contador = 0;
     }

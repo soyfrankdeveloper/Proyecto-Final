@@ -1,9 +1,9 @@
 #ifndef FISICACORRIENTE_H
 #define FISICACORRIENTE_H
 
-#include "Fisica.h"
+#include "fisicasubmarina.h"
 
-class FisicaCorriente : public Fisica
+class FisicaCorriente : public FisicaSubmarina
 {
 private:
     float aceleracionCorriente;
@@ -11,18 +11,12 @@ private:
 public:
     FisicaCorriente();
 
-    //float aplicarCorriente(float posicionX,
-     //                      float tiempo);
+    virtual float aplicarEfectoEspecial(float valorBase,
+                                        float tiempo);
 
-
-    /*aplicarEfectoEspecial recibe una posicionX base, y nos retorna una posicion desviadad por la corriente marina*/
-     virtual float aplicarEfectoEspecial(float valorBase,
-                                         float tiempo);
-
-     //sobreescribimos solo en x puesto que la corriente afecta unicamente el eje horizontal
-     virtual float calcularPosicionX(float velocidad,
-                                     float angulo,
-                                     float tiempo);
+    virtual float calcularPosicionX(float velocidad,
+                                    float angulo,
+                                    float tiempo);
 };
 
-#endif // FISICACORRIENTE_H
+#endif

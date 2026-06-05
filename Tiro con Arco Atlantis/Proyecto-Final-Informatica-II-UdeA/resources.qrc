@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Sprites/Sprites Nivel 1/burbujas.png</file>
+        <file>Sprites/Sprites Nivel 1/enemigo.png</file>
+        <file>Sprites/Sprites Nivel 1/Flecha.png</file>
+        <file>Sprites/Sprites Nivel 1/flechaagresiva.png</file>
+        <file>Sprites/Sprites Nivel 1/fondo.png</file>
+        <file>Sprites/Sprites Nivel 1/jugador.png</file>
+        <file>Sprites/Sprites Nivel 1/obstaculo.png</file>
+    </qresource>
+</RCC>

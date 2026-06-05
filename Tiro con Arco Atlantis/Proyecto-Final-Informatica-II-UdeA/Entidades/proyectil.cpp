@@ -1,5 +1,6 @@
 #include "proyectil.h"
 #include "../Fisica/fisicaSubmarina.h"
+#include <cmath>
 
 Proyectil::Proyectil()
 {
@@ -58,13 +59,13 @@ void Proyectil::actualizar()
 
     x = xInicial +
         fisica->calcularPosicionX(
-            velocidadinicial,
+            velocidadInicial,
             angulo,
             tiempo);
 
     y = yInicial +
         fisica->calcularPosicionY(
-            velocidadinicial,
+            velocidadInicial,
             angulo,
             tiempo);
 }
@@ -92,6 +93,23 @@ float Proyectil::getAngulo()
 float Proyectil::getVelocidadInicial()
 {
     return velocidadInicial;
+}
+
+float Proyectil::getAnguloActual()
+{
+    float vx =
+        fisica->calcularVelocidadX(
+            velocidadInicial,
+            angulo,
+            tiempo);
+
+    float vy =
+        fisica->calcularVelocidadY(
+            velocidadInicial,
+            angulo,
+            tiempo);
+
+    return atan2(vy, vx) * 180.0 / 3.1416;
 }
 
 void Proyectil::setDelJugador(bool valor)

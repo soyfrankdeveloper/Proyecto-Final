@@ -16,3 +16,8 @@ void Nivel2::actualizarNivel()
 {
 
 }
+
+Fisica* Nivel2::crearFisica()
+{
+    return new FisicaCorriente();
+}

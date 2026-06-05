@@ -4,6 +4,8 @@
 #include "../entidades/Enemigo.h"
 #include "../entidades/Jugador.h"
 
+#include <cstdlib>      //para poder usar rand()
+
 class AgenteInteligente
 {
 private:
@@ -12,6 +14,8 @@ private:
     float anguloDisparo;
     float potenciaDisparo;
     int disparosFallidos;
+    float variacionAngulo;      //variacion aleatoria del angulo de disparo enemigo
+    float variacionPotencia;    //variacion aleatoria de la potencia de disparo enemigo
 
 
 public:
@@ -35,6 +39,8 @@ public:
 
     void detectarProyectil(float proyectilX,
                            float enemigoX);
+
+    void calcularVariacion();   //para la nueva variacion de manera aleatoria
 };
 
 #endif // AGENTEINTELIGENTE_H

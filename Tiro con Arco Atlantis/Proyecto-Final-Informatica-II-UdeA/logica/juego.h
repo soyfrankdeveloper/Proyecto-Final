@@ -36,6 +36,12 @@ private:
 
     Nivel* nivelActual;
 
+    int nivel;
+
+    int tiempoNivel2;
+
+    bool nivel2Terminado;
+
 
 public:
 
@@ -67,6 +73,26 @@ public:
     int getPuntajeJugador();
 
     vector<Obstaculo*>& getObstaculos();
+
+    int getNivel();
+
+    void cambiarNivel2();
+
+    int getTiempoNivel2();
+
+    bool getNivel2Terminado();
+
+
+    bool jugadorGanoNivel2();
+
+    float getJugadorX();
+    float getJugadorY();
+
+    void moverJugadorArriba();
+    void moverJugadorAbajo();
+    void moverJugadorIzquierda();
+    void moverJugadorDerecha();
+
 
     ~Juego();
 };

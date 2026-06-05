@@ -8,6 +8,8 @@ class Enemigo : public Personaje
 {
 private:
     bool moviendo;
+    float tiempoMovimiento;
+    float posicionBase;
 
 public:
     Enemigo();
@@ -16,6 +18,8 @@ public:
     void esquivar();
 
     bool getMoviendo();
+
+    void actualizarMovimiento();
 };
 
 #endif // ENEMIGO_H

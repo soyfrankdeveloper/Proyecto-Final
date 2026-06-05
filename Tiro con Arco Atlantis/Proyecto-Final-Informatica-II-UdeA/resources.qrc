@@ -4,8 +4,13 @@
         <file>Sprites/Sprites Nivel 1/enemigo.png</file>
         <file>Sprites/Sprites Nivel 1/Flecha.png</file>
         <file>Sprites/Sprites Nivel 1/flechaagresiva.png</file>
-        <file>Sprites/Sprites Nivel 1/fondo.png</file>
         <file>Sprites/Sprites Nivel 1/jugador.png</file>
         <file>Sprites/Sprites Nivel 1/obstaculo.png</file>
+        <file>Sprites/Sprites Nivel 1/fondo.jpeg</file>
+        <file>Sprites/Sprites Nivel 2/corriente.png</file>
+        <file>Sprites/Sprites Nivel 2/enemigo.png</file>
+        <file>Sprites/Sprites Nivel 2/flecha.png</file>
+        <file>Sprites/Sprites Nivel 2/fondo.jpeg</file>
+        <file>Sprites/Sprites Nivel 2/jugador.png</file>
     </qresource>
 </RCC>

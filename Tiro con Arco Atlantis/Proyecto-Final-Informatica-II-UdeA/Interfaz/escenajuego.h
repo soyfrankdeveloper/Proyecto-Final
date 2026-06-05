@@ -35,12 +35,11 @@ private:
 
     Juego juego;
 
+    Jugador jugador;
     vector<QGraphicsPixmapItem*> proyectilesItems;
     vector<QGraphicsPixmapItem*> burbujasProyectiles;
 
     QTimer timer;
-
-    Jugador jugador;
 
     QGraphicsTextItem* textoAngulo;
 
@@ -49,6 +48,10 @@ private:
     QGraphicsPixmapItem* burbujasItem;
 
     QGraphicsTextItem* textoNivel;
+
+    QGraphicsTextItem* textoTiempo;
+
+    bool fondoNivel2Cargado;
 
 public:
 

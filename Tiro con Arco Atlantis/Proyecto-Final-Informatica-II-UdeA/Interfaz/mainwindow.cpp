@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    resize(1000,700);
+    resize(1000,600);
 
     juego.iniciarJuego();
 

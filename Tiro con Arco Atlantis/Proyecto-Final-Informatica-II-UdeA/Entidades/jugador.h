@@ -10,6 +10,7 @@ private:
     float angulo;
     float potencia;
 
+
 public:
     Jugador();
 
@@ -20,6 +21,11 @@ public:
     void setPotencia(float potencia);
 
     float getPotencia();
+
+    void moverArriba();
+    void moverAbajo();
+    void moverIzquierda();
+    void moverDerecha();
 };
 
 #endif // JUGADOR_H

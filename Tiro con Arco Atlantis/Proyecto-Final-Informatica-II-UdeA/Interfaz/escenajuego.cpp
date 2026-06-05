@@ -12,6 +12,8 @@ EscenaJuego::EscenaJuego(QObject *parent)
             &EscenaJuego::actualizarEscena);
 
     timer.start(30);
+
+    fondoNivel2Cargado = false;
 }
 
 void EscenaJuego::actualizarEscena()
@@ -19,6 +21,12 @@ void EscenaJuego::actualizarEscena()
 
     juego.actualizarJuego();
 
+    if(juego.getNivel() == 2)
+    {
+        jugadorItem->setPos(
+            juego.getJugadorX(),
+            600 - juego.getJugadorY());
+    }
     enemigoItem->setPos(
         juego.getEnemigoX(),
         600 - juego.getEnemigoY());
@@ -158,6 +166,79 @@ void EscenaJuego::actualizarEscena()
             600 - obstaculos[i]->getY());
     }
 
+    textoTiempo->setPlainText(
+        "Tiempo: " +
+        QString::number(
+            juego.getTiempoNivel2()));
+
+    if(juego.getNivel2Terminado())
+    {
+        textoVictoria->setPlainText(
+            "FIN NIVEL 2");
+    }
+
+    if(juego.getNivel() == 2)
+    {
+        textoNivel->setPlainText(
+            "Nivel 2: Abismo Oceánico");
+    }
+
+    if(juego.getNivel() == 2 &&
+        !fondoNivel2Cargado)
+    {
+        QPixmap fondo2(
+            ":/Sprites/Sprites Nivel 2/fondo.jpeg");
+
+        fondoItem->setPixmap(
+            fondo2.scaled(
+                1000,
+                600));
+
+        QPixmap jugador2(
+            ":/Sprites/Sprites Nivel 2/jugador.png");
+
+        jugadorItem->setPixmap(
+            jugador2.scaled(
+                200,
+                200));
+
+        QPixmap enemigo2(
+            ":/Sprites/Sprites Nivel 2/enemigo.png");
+
+        enemigoItem->setPixmap(
+            enemigo2.scaled(
+                200,
+                200));
+
+        fondoNivel2Cargado = true;
+    }
+
+
+
+    if(juego.getTiempoNivel2() <= 0)
+    {
+        textoVictoria->setPlainText(
+            "TIEMPO AGOTADO");
+    }
+
+    if(juego.getTiempoNivel2() <= 0)
+    {
+        if(juego.jugadorGanoNivel2())
+        {
+            textoVictoria->setPlainText(
+                "GANASTE");
+        }
+        else
+        {
+            textoVictoria->setPlainText(
+                "PERDISTE");
+        }
+    }
+
+    //jugadorItem->setPos(
+      //  jugador.getX(),
+        //600 - jugador.getY());
+
 }
 
 void EscenaJuego::inicializarEscena()
@@ -166,8 +247,17 @@ void EscenaJuego::inicializarEscena()
 
     setSceneRect(0,0,1000,600);
 
+    QGraphicsTextItem* ayuda;
+
+    ayuda = addText(
+        "W/S/A/D mover\n"
+        "Flechas ajustar\n"
+        "Espacio disparar");
+
+    ayuda->setPos(750,20);
+
     QPixmap fondo(
-        ":/Sprites/Sprites Nivel 1/fondo.png");
+        ":/Sprites/Sprites Nivel 1/fondo.jpeg");
 
     fondoItem = addPixmap(
         fondo.scaled(
@@ -201,6 +291,8 @@ void EscenaJuego::inicializarEscena()
     enemigoItem->setPos(
         800,
         400);
+
+
 
     textoVictoria = addText("");
 
@@ -238,6 +330,13 @@ void EscenaJuego::inicializarEscena()
     textoVidaJugador->setPos(
         20,
         110);
+
+    textoTiempo =
+        addText("Tiempo: 60");
+
+    textoTiempo->setPos(
+        20,
+        200);
 }
 
 void EscenaJuego::keyPressEvent(QKeyEvent *event)
@@ -286,6 +385,29 @@ void EscenaJuego::keyPressEvent(QKeyEvent *event)
         {
             jugador.setPotencia(
                 jugador.getPotencia() - 5);
+        }
+    }
+
+    if(juego.getNivel() == 2)
+    {
+        if(event->key() == Qt::Key_W)
+        {
+            juego.moverJugadorArriba();
+        }
+
+        if(event->key() == Qt::Key_S)
+        {
+            juego.moverJugadorAbajo();
+        }
+
+        if(event->key() == Qt::Key_A)
+        {
+            juego.moverJugadorIzquierda();
+        }
+
+        if(event->key() == Qt::Key_D)
+        {
+            juego.moverJugadorDerecha();
         }
     }
 

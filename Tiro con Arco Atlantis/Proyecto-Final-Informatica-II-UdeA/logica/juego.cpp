@@ -8,9 +8,29 @@ Juego::Juego()
 
     vidasJugador = 3;
 
-    nivelActual = new Nivel2();
+    nivelActual = new Nivel1();
+
+    nivel = 1;
+
+    tiempoNivel2 = 60;
+
+    nivel2Terminado = false;
 }
 
+float Juego::getJugadorX()
+{
+    return jugador.getX();
+}
+
+float Juego::getJugadorY()
+{
+    return jugador.getY();
+}
+
+int Juego::getTiempoNivel2()
+{
+    return tiempoNivel2;
+}
 
 Juego::~Juego()
 {
@@ -31,12 +51,43 @@ Juego::~Juego()
     delete nivelActual;
 }
 
+
+int Juego::getNivel()
+{
+    return nivelActual->getId();
+}
+
+bool Juego::jugadorGanoNivel2()
+{
+    return jugador.getPuntaje() >= 300;
+}
+
+void Juego::cambiarNivel2()
+{
+    delete nivelActual;
+
+    nivelActual = new Nivel2();
+
+    nivel = 2;
+
+    enemigo = Enemigo();
+
+    enemigo.setPosicion(
+        800,
+        200);
+}
+
 void Juego::iniciarJuego()
 {
 
     jugador.setPosicion(100, 200);
 
     enemigo.setPosicion(800,200);
+}
+
+bool Juego::getNivel2Terminado()
+{
+    return nivel2Terminado;
 }
 
 void Juego::crearProyectil(float velocidad,
@@ -73,7 +124,7 @@ void Juego::crearProyectil(float velocidad,
     proyectiles.push_back(
         nuevoProyectil);
 
-    if(delJugador)
+    if(delJugador && nivel == 1)
     {
         turnoJugador = false;
     }
@@ -81,7 +132,8 @@ void Juego::crearProyectil(float velocidad,
 
 void Juego::dispararEnemigo()
 {
-    if(proyectiles.size() > 0)
+    if(nivel == 1 &&
+        proyectiles.size() > 0)
     {
         return;
     }
@@ -92,8 +144,15 @@ void Juego::dispararEnemigo()
         false);
 }
 
+
+
 void Juego::actualizarJuego()
 {
+    if(nivel2Terminado)
+    {
+        return;
+    }
+
     for(int i = 0; i < proyectiles.size(); i++)
     {
         proyectiles[i]->actualizar();
@@ -263,6 +322,53 @@ void Juego::actualizarJuego()
         }
     }
 
+    static int contadorTiempo = 0;
+
+    if(nivel == 2)
+    {
+        contadorTiempo++;
+
+        if(contadorTiempo >= 33)
+        {
+            tiempoNivel2--;
+
+            contadorTiempo = 0;
+        }
+    }
+
+    if(jugador.getPuntaje() >= 300 &&
+        nivel == 1)
+    {
+        cambiarNivel2();
+    }
+
+    if(nivel == 2)
+    {
+        enemigo.actualizarMovimiento();
+    }
+
+    if(tiempoNivel2 <= 0)
+    {
+        nivel2Terminado = true;
+    }
+
+    static int contadorDisparoIA = 0;
+
+    if(nivel == 2)
+    {
+        contadorDisparoIA++;
+
+        if(contadorDisparoIA >= 80)
+        {
+            crearProyectil(
+                agenteIA.getPotenciaDisparo(),
+                agenteIA.getAnguloDisparo(),
+                false);
+
+            contadorDisparoIA = 0;
+        }
+    }
+
 }
 
 
@@ -313,6 +419,26 @@ vector<Obstaculo*>& Juego::getObstaculos()
     return obstaculos;
 }
 
+
+void Juego::moverJugadorArriba()
+{
+    jugador.moverArriba();
+}
+
+void Juego::moverJugadorAbajo()
+{
+    jugador.moverAbajo();
+}
+
+void Juego::moverJugadorIzquierda()
+{
+    jugador.moverIzquierda();
+}
+
+void Juego::moverJugadorDerecha()
+{
+    jugador.moverDerecha();
+}
 
 
 

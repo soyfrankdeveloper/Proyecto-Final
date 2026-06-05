@@ -25,3 +25,27 @@ float Jugador::getPotencia()
 {
     return potencia;
 }
+
+void Jugador::moverArriba()
+{
+    if(y < 500)
+        y += 10;
+}
+
+void Jugador::moverAbajo()
+{
+    if(y > 50)
+        y -= 10;
+}
+
+void Jugador::moverIzquierda()
+{
+    if(x > 50)
+        x -= 10;
+}
+
+void Jugador::moverDerecha()
+{
+    if(x < 400)
+        x += 10;
+}

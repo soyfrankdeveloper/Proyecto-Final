@@ -1,5 +1,6 @@
 #include "Nivel1.h"
 
+
 Nivel1::Nivel1()
 {
     id = 1;
@@ -20,3 +21,9 @@ void Nivel1::configurarFisica()
 {
 
 }
+
+Fisica* Nivel1::crearFisica()
+{
+    return new FisicaSubmarina();
+}
+

@@ -1,9 +1,10 @@
 #include "fisicacorriente.h"
 #include <cmath>
 
+
 FisicaCorriente::FisicaCorriente()
 {
-    aceleracionCorriente = 2;
+    aceleracionCorriente = 0.2;
     gravedad =9.8;
 }
 

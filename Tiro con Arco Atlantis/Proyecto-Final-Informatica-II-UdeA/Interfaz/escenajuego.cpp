@@ -1,5 +1,7 @@
  #include "escenajuego.h"
 #include <QGraphicsRectItem>
+#include <QBrush>
+#include <QColor>
 
 EscenaJuego::EscenaJuego(QObject *parent)
     : QGraphicsScene(parent)
@@ -17,11 +19,9 @@ void EscenaJuego::actualizarEscena()
 
     juego.actualizarJuego();
 
-    enemigoItem->setRect(
+    enemigoItem->setPos(
         juego.getEnemigoX(),
-        600 - juego.getEnemigoY(),
-        50,
-        50);
+        600 - juego.getEnemigoY());
 
     vector<Proyectil*>& proyectiles =
         juego.getProyectiles();
@@ -41,20 +41,35 @@ void EscenaJuego::actualizarEscena()
 
     while(proyectilesItems.size() < proyectiles.size())
     {
-        QGraphicsRectItem* nuevoItem;
+        QGraphicsPixmapItem* nuevoItem;
 
-        nuevoItem = addRect(0,0,20,5);
+        QPixmap flechaSprite(
+            ":/Sprites/Sprites Nivel 1/Flecha.png");
 
-        proyectilesItems.push_back(nuevoItem);
+        nuevoItem =
+            addPixmap(
+                flechaSprite.scaled(
+                    400,
+                    160,
+                    Qt::KeepAspectRatio,
+                    Qt::SmoothTransformation));
+
+        nuevoItem->setTransformOriginPoint(
+            nuevoItem->boundingRect().center());
+
+        proyectilesItems.push_back(
+            nuevoItem);
     }
 
     for(unsigned int i = 0; i < proyectiles.size(); i++)
     {
-        proyectilesItems[i]->setRect(
+        proyectilesItems[i]->setPos(
             proyectiles[i]->getX(),
-            600 - proyectiles[i]->getY(),
-            20,
-            5);
+            600 - proyectiles[i]->getY());
+
+
+        proyectilesItems[i]->setRotation(
+            -proyectiles[i]->getAnguloActual());
     }
 
     textoVidaEnemigo->setPlainText(
@@ -80,6 +95,11 @@ void EscenaJuego::actualizarEscena()
 
         textoVictoria->setPlainText(
             "¡VICTORIA!");
+
+        textoVictoria->setDefaultTextColor(
+            Qt::green);
+
+        textoVictoria->setScale(3);
     }
 
     if(juego.getVidasJugador() <= 0)
@@ -88,6 +108,11 @@ void EscenaJuego::actualizarEscena()
 
         textoVictoria->setPlainText(
             "DERROTA");
+
+        textoVictoria->setDefaultTextColor(
+            Qt::red);
+
+        textoVictoria->setScale(3);
     }
 
     vector<Obstaculo*>& obstaculos =
@@ -107,13 +132,18 @@ void EscenaJuego::actualizarEscena()
     while(obstaculosItems.size() <
            obstaculos.size())
     {
-        QGraphicsRectItem* nuevo;
+        QGraphicsPixmapItem* nuevo;
 
-        nuevo = addRect(
-            0,
-            0,
-            30,
-            30);
+        QPixmap obstaculoSprite(
+            ":/Sprites/Sprites Nivel 1/obstaculo.png");
+
+        nuevo =
+            addPixmap(
+                obstaculoSprite.scaled(
+                    50,
+                    50,
+                    Qt::KeepAspectRatio,
+                    Qt::SmoothTransformation));
 
         obstaculosItems.push_back(
             nuevo);
@@ -123,11 +153,9 @@ void EscenaJuego::actualizarEscena()
          i < obstaculos.size();
          i++)
     {
-        obstaculosItems[i]->setRect(
+        obstaculosItems[i]->setPos(
             obstaculos[i]->getX(),
-            600 - obstaculos[i]->getY(),
-            30,
-            30);
+            600 - obstaculos[i]->getY());
     }
 
 }
@@ -138,9 +166,41 @@ void EscenaJuego::inicializarEscena()
 
     setSceneRect(0,0,1000,600);
 
-    jugadorItem = addRect(100,400,50,50);
+    QPixmap fondo(
+        ":/Sprites/Sprites Nivel 1/fondo.png");
 
-    enemigoItem = addRect(800, 400,50,50);
+    fondoItem = addPixmap(
+        fondo.scaled(
+            1000,
+            600));
+
+    fondoItem->setZValue(-100);
+
+    QPixmap jugadorSprite(
+        ":/Sprites/Sprites Nivel 1/jugador.png");
+
+    jugadorItem =
+        addPixmap(
+            jugadorSprite.scaled(
+                200,
+                200));
+
+    jugadorItem->setPos(
+        100,
+        400);
+
+    QPixmap enemigoSprite(
+        ":/Sprites/Sprites Nivel 1/enemigo.png");
+
+    enemigoItem =
+        addPixmap(
+            enemigoSprite.scaled(
+                200,
+                200));
+
+    enemigoItem->setPos(
+        800,
+        400);
 
     textoVictoria = addText("");
 
@@ -158,6 +218,13 @@ void EscenaJuego::inicializarEscena()
     textoPotencia->setPos(20,50);
 
     textoVidaEnemigo = addText("Vida enemigo: 3");
+
+    textoNivel = addText(
+        "Nivel: Atlantis");
+
+    textoNivel->setPos(
+        20,
+        170);
 
     textoVidaEnemigo->setPos(20,80);
 

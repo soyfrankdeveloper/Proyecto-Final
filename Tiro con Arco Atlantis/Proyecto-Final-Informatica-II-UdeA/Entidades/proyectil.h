@@ -38,6 +38,8 @@ public:
     float getAngulo();
     float getVelocidadInicial();
 
+    float getAnguloActual();
+
     void setDelJugador(bool valor);
 
     bool getDelJugador();

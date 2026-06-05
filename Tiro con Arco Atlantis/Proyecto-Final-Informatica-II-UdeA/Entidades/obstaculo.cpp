@@ -5,7 +5,7 @@ Obstaculo::Obstaculo()
 {
     x = 200 + rand() % 600;
 
-    y = 650;
+    y = 700;
 
     velocidad = 2;
 }
@@ -30,12 +30,11 @@ bool Obstaculo::fueraDePantalla()
     return y < -50;
 }
 
-bool Obstaculo::verificarColision(
-    float px,
-    float py)
+bool Obstaculo::verificarColision(float px,
+                                  float py)
 {
-    return px >= x &&
-           px <= x + 30 &&
-           py >= y &&
-           py <= y + 30;
+    return px >= x - 10 &&
+           px <= x + 40 &&
+           py >= y - 10 &&
+           py <= y + 40;
 }

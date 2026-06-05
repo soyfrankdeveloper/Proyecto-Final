@@ -7,6 +7,8 @@
 #include <QKeyEvent>
 #include "../logica/juego.h"
 #include "../entidades/obstaculo.h"
+#include <QGraphicsPixmapItem>
+#include <QPixmap>
 
 #include <vector>
 #include <QTimer>
@@ -15,9 +17,9 @@ class EscenaJuego : public QGraphicsScene
 {
 private:
 
-    QGraphicsRectItem* jugadorItem;
+    QGraphicsPixmapItem* jugadorItem;
 
-    QGraphicsRectItem* enemigoItem;
+    QGraphicsPixmapItem* enemigoItem;
 
     QGraphicsTextItem* textoPotencia;
 
@@ -29,17 +31,24 @@ private:
 
     QGraphicsTextItem* textoPuntaje;
 
-    vector<QGraphicsRectItem*> obstaculosItems;
+    vector<QGraphicsPixmapItem*> obstaculosItems;
 
     Juego juego;
 
-    vector<QGraphicsRectItem*> proyectilesItems;
+    vector<QGraphicsPixmapItem*> proyectilesItems;
+    vector<QGraphicsPixmapItem*> burbujasProyectiles;
 
     QTimer timer;
 
     Jugador jugador;
 
     QGraphicsTextItem* textoAngulo;
+
+    QGraphicsPixmapItem* fondoItem;
+
+    QGraphicsPixmapItem* burbujasItem;
+
+    QGraphicsTextItem* textoNivel;
 
 public:
 

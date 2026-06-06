@@ -189,6 +189,9 @@ void EscenaJuego::actualizarEscena()
             Qt::green);
 
         textoVictoria->setScale(3);
+
+        if(juego.getNivel()==2)
+            timer.stop();       //le pedimos que apenas muera el enemigo en nivel2, detenga el juego
     }
 
     if(juego.getVidasJugador() <= 0)
@@ -202,6 +205,8 @@ void EscenaJuego::actualizarEscena()
             Qt::red);
 
         textoVictoria->setScale(3);
+
+        timer.stop();
     }
 
     vector<Obstaculo*>& obstaculos =

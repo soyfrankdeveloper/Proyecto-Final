@@ -209,49 +209,68 @@ void EscenaJuego::actualizarEscena()
         timer.stop();
     }
 
-    vector<Obstaculo*>& obstaculos =
-        juego.getObstaculos();
 
-    while(obstaculosItems.size() >
-           obstaculos.size())
+    if(juego.getNivel()==2 && !fondoNivel2Cargado)
     {
-        removeItem(
-            obstaculosItems.back());
+        QPixmap fondo2(":/Sprites/Sprites Nivel 2/fondo.jpeg");
+        fondoItem->setPixmap(fondo2.scaled(1000,600));
 
-        delete obstaculosItems.back();
-
-        obstaculosItems.pop_back();
+        //le pedimos ahora que borre los obstaculos para nivel 2
+        for(auto item:obstaculosItems)
+        {
+            removeItem(item);
+            delete item;
+        }
+        obstaculosItems.clear();
+        fondoNivel2Cargado=true;
     }
 
-    while(obstaculosItems.size() <
-           obstaculos.size())
+    if(juego.getNivel()==1)
     {
-        QGraphicsPixmapItem* nuevo;
 
-        QPixmap obstaculoSprite(
-            ":/Sprites/Sprites Nivel 1/obstaculo.png");
+        vector<Obstaculo*>& obstaculos =
+            juego.getObstaculos();
 
-        nuevo =
-            addPixmap(
-                obstaculoSprite.scaled(
-                    50,
-                    50,
-                    Qt::KeepAspectRatio,
-                    Qt::SmoothTransformation));
+        while(obstaculosItems.size() >
+               obstaculos.size())
+        {
+            removeItem(
+                obstaculosItems.back());
 
-        obstaculosItems.push_back(
-            nuevo);
+            delete obstaculosItems.back();
+
+            obstaculosItems.pop_back();
+        }
+
+        while(obstaculosItems.size() <
+               obstaculos.size())
+        {
+            QGraphicsPixmapItem* nuevo;
+
+            QPixmap obstaculoSprite(
+                ":/Sprites/Sprites Nivel 1/obstaculo.png");
+
+            nuevo =
+                addPixmap(
+                    obstaculoSprite.scaled(
+                        50,
+                        50,
+                        Qt::KeepAspectRatio,
+                        Qt::SmoothTransformation));
+
+            obstaculosItems.push_back(
+                nuevo);
+        }
+
+        for(unsigned int i = 0;
+             i < obstaculos.size();
+             i++)
+        {
+            obstaculosItems[i]->setPos(
+                obstaculos[i]->getX(),
+                600 - obstaculos[i]->getY());
+        }
     }
-
-    for(unsigned int i = 0;
-         i < obstaculos.size();
-         i++)
-    {
-        obstaculosItems[i]->setPos(
-            obstaculos[i]->getX(),
-            600 - obstaculos[i]->getY());
-    }
-
     textoTiempo->setPlainText(
         "Tiempo: " +
         QString::number(

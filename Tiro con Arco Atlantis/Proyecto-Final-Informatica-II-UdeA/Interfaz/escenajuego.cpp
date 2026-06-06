@@ -61,23 +61,36 @@ EscenaJuego::EscenaJuego(QObject *parent)
 
 void EscenaJuego::actualizarEscena()
 {
-    //le decimos que animacion usar segun su estado
-    if(juego.getVidasJugador()<=0)
-        animacionActualJugador =&framesJugadorMorir;
-    else if (juego.getTurnoJugador()==false)
-        animacionActualJugador=&framesJugadorAtaque;
-    else
-        animacionActualJugador=&framesJugadorCorrer;
+    if(juego.getNivel()==1)
+    {
 
-    if(juego.getVidasEnemigo()<=0)
-        animacionActualEnemigo=&framesEnemigoMorir;
+
+        //le decimos que animacion usar segun su estado
+        if(juego.getVidasJugador()<=0)
+            animacionActualJugador =&framesJugadorMorir;
+
+        else if (juego.getTurnoJugador()==false)
+            animacionActualJugador=&framesJugadorAtaque;
+
+        else
+            animacionActualJugador=&framesJugadorCorrer;
+
+        if(juego.getVidasEnemigo()<=0)
+            animacionActualEnemigo=&framesEnemigoMorir;
+
+        else
+            animacionActualEnemigo=&framesEnemigoCorrer;
+    }
     else
+    {
+        animacionActualJugador=&framesJugadorCorrer;
         animacionActualEnemigo=&framesEnemigoCorrer;
+    }
 
 
     //colocamos las animaciones por este lado
     contadorAnimacion++;
-    if(contadorAnimacion>=6)//que cambie el frame cada 6ticks o 180ms
+    if(contadorAnimacion>=6) //que cambie el frame cada 6ticks o 180ms
     {
         contadorAnimacion =0;       //inicializamos contador en cero
 
@@ -160,55 +173,69 @@ void EscenaJuego::actualizarEscena()
         proyectilesItems[i]->setRotation(
             -proyectiles[i]->getAnguloActual());
     }
+    if(juego.getNivel()==1)
+    {
+        textoVidaEnemigo->setPlainText(
+            "Vida enemigo: " +
+            QString::number(
+                juego.getVidasEnemigo()));
 
-    textoVidaEnemigo->setPlainText(
-        "Vida enemigo: " +
-        QString::number(
-            juego.getVidasEnemigo()));
+        textoVidaJugador->setPlainText(
+            "Vida jugador: " +
+            QString::number(
+                juego.getVidasJugador()));
+
+    }
+    else        //lo que hacemos acá es ocultar el texto en el nivel 2
+    {
+        textoVidaEnemigo->setPlainText("");
+        textoVidaJugador->setPlainText("");
+    }
+
+
 
     textoPuntaje->setPlainText(
         "Puntaje: " +
         QString::number(
             juego.getPuntajeJugador()));
 
-    textoVidaJugador->setPlainText(
-        "Vida jugador: " +
-        QString::number(
-            juego.getVidasJugador()));
 
 
 
-    if(juego.getVidasEnemigo() <= 0)
+
+    if(juego.getNivel()==1)
     {
-        enemigoItem->hide();
+        if(juego.getVidasEnemigo() <= 0)
+        {
+            enemigoItem->hide();
 
-        textoVictoria->setPlainText(
-            "¡VICTORIA!");
+            textoVictoria->setPlainText(
+                "¡VICTORIA!");
 
-        textoVictoria->setDefaultTextColor(
-            Qt::green);
+            textoVictoria->setDefaultTextColor(
+                Qt::green);
 
-        textoVictoria->setScale(3);
+            textoVictoria->setScale(3);
 
-        if(juego.getNivel()==2)
-            timer.stop();       //le pedimos que apenas muera el enemigo en nivel2, detenga el juego
+            if(juego.getNivel()==2)
+                timer.stop();       //le pedimos que apenas muera el enemigo en nivel2, detenga el juego
+        }
+
+        if(juego.getVidasJugador() <= 0)
+        {
+            jugadorItem->hide();
+
+            textoVictoria->setPlainText(
+                "DERROTA");
+
+            textoVictoria->setDefaultTextColor(
+                Qt::red);
+
+            textoVictoria->setScale(3);
+
+            timer.stop();
+        }
     }
-
-    if(juego.getVidasJugador() <= 0)
-    {
-        jugadorItem->hide();
-
-        textoVictoria->setPlainText(
-            "DERROTA");
-
-        textoVictoria->setDefaultTextColor(
-            Qt::red);
-
-        textoVictoria->setScale(3);
-
-        timer.stop();
-    }
-
 
     if(juego.getNivel()==2 && !fondoNivel2Cargado)
     {

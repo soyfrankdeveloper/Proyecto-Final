@@ -19,7 +19,8 @@ public:
 
     bool getMoviendo();
 
-    void actualizarMovimiento();
+    void actualizarMovimiento(
+        float jugadorX, float jugadorY);
 };
 
 #endif // ENEMIGO_H

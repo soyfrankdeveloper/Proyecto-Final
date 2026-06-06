@@ -54,13 +54,32 @@ private:
     bool fondoNivel2Cargado;
 
     //agregamos las animaciones
+    /*Nota: Qvector es un contenedor o cajita donde almacenamos QPixmap que es un tipo de
+     dato que nos permite mostrar en pantalla una imagen cargada en memoria*/
+    QVector<QPixmap> framesJugadorCorrer;
+    QVector<QPixmap> framesJugadorAtaque;
+    QVector<QPixmap> framesJugadorMorir;
+
+    QVector<QPixmap> framesEnemigoCorrer;
+    QVector<QPixmap> framesEnemigoAtaque;
+    QVector<QPixmap> framesEnemigoMorir;
+
+
+    /*Pd: tomamos la decicion de usar punteros para indicar que animacion del jugador/enemigo está activa
+     de esta manera, el juego puede cambiar libremente entre diferentes animaciones según las acciones que
+     estén realizando los personajes*/
+    QVector<QPixmap>* animacionActualJugador;
+    QVector<QPixmap>* animacionActualEnemigo;
+
+
     int frameJugador;
     int frameEnemigo;
     int contadorAnimacion;
-    int totalFramesJugador;
-    int totalFramesEnemigo;
-    QPixmap spriteSheetJugador;
-    QPixmap spriteSheetEnemigo;
+
+    // int totalFramesJugador;
+    // int totalFramesEnemigo;
+    // QPixmap spriteSheetJugador;
+    // QPixmap spriteSheetEnemigo;
 
 
 public:

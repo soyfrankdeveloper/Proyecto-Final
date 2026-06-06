@@ -344,7 +344,9 @@ void Juego::actualizarJuego()
 
     if(nivel == 2)
     {
-        enemigo.actualizarMovimiento();
+        enemigo.actualizarMovimiento(
+            jugador.getX(),
+            jugador.getY());
     }
 
     if(tiempoNivel2 <= 0)

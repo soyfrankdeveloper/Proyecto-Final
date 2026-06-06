@@ -12,5 +12,33 @@
         <file>Sprites/Sprites Nivel 2/flecha.png</file>
         <file>Sprites/Sprites Nivel 2/fondo.jpeg</file>
         <file>Sprites/Sprites Nivel 2/jugador.png</file>
+        <file>Sprites/Sprites acciones/ataque/ataque1.png</file>
+        <file>Sprites/Sprites acciones/ataque/ataque2.png</file>
+        <file>Sprites/Sprites acciones/ataque/ataque3.png</file>
+        <file>Sprites/Sprites acciones/ataque/ataque4.png</file>
+        <file>Sprites/Sprites acciones/ataque/ataque5.png</file>
+        <file>Sprites/Sprites acciones/ataque/ataque6.png</file>
+        <file>Sprites/Sprites acciones/correr/correr1.png</file>
+        <file>Sprites/Sprites acciones/correr/correr2.png</file>
+        <file>Sprites/Sprites acciones/correr/correr3.png</file>
+        <file>Sprites/Sprites acciones/correr/correr4.png</file>
+        <file>Sprites/Sprites acciones/correr/correr5.png</file>
+        <file>Sprites/Sprites acciones/correr/correr6.png</file>
+        <file>Sprites/Sprites acciones/morir/morir1.png</file>
+        <file>Sprites/Sprites acciones/morir/morir2.png</file>
+        <file>Sprites/Sprites acciones/morir/morir3.png</file>
+        <file>Sprites/Sprites acciones/morir/morir4.png</file>
+        <file>Sprites/Sprites acciones/correrenemigo/correrenemigo1.png</file>
+        <file>Sprites/Sprites acciones/correrenemigo/correrenemigo2.png</file>
+        <file>Sprites/Sprites acciones/correrenemigo/correrenemigo3.png</file>
+        <file>Sprites/Sprites acciones/correrenemigo/correrenemigo4.png</file>
+        <file>Sprites/Sprites acciones/correrenemigo/correrenemigo5.png</file>
+        <file>Sprites/Sprites acciones/correrenemigo/correrenemigo6.png</file>
+        <file>Sprites/Sprites acciones/ataqueenemigo/ataqueenemigo1.png</file>
+        <file>Sprites/Sprites acciones/ataqueenemigo/ataqueenemigo2.png</file>
+        <file>Sprites/Sprites acciones/morirenemigo/morirenemigo1.png</file>
+        <file>Sprites/Sprites acciones/morirenemigo/morirenemigo2.png</file>
+        <file>Sprites/Sprites acciones/morirenemigo/morirenemigo3.png</file>
+        <file>Sprites/Sprites acciones/morirenemigo/morirenemigo4.png</file>
     </qresource>
 </RCC>

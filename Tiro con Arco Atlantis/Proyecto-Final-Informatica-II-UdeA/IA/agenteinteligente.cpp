@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 
+
 AgenteInteligente::AgenteInteligente()
 {
     jugadorDetectado = false;
@@ -47,13 +48,17 @@ void AgenteInteligente::decidir(
         posicionJugadorX;
 
     //le pedimos que calcule una nueva variacion para cada disparo
-    calcularVariacion();
+    int rangoVariacion=15-disparosFallidos*2;
+    if(rangoVariacion<3) rangoVariacion=3;
+
+    variacionAngulo =(rand()%(rangoVariacion*2+1))-rangoVariacion;
+    variacionPotencia= (rand()%(rangoVariacion*2+1))-rangoVariacion;
 
     if(distancia > 500)
     {
         //lejos del jugaror va ajustando con fallidos + variacion
         potenciaDisparo =
-            100 + disparosFallidos * 10+
+            100 + disparosFallidos * 8+
         variacionPotencia;
 
         anguloDisparo =
@@ -66,8 +71,8 @@ void AgenteInteligente::decidir(
         /*cerca del jugador lo ponemos mas preciso pero con variaciones
         la variacion se reduce a la mitad para que tenga mayor dificultad
         */
-        potenciaDisparo = 130+ variacionPotencia/2;
-        anguloDisparo = 130+variacionAngulo/2;
+        potenciaDisparo = 120+ disparosFallidos*5+variacionPotencia;
+        anguloDisparo = 132+variacionAngulo;
     }
     //le pedimos que el angulo no pueda salirse dentro de los rangos logicos
     if(anguloDisparo <100)anguloDisparo=100;

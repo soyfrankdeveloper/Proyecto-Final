@@ -2,7 +2,7 @@ Videojuego basado en tiro al blanco ambientado en el fondo oceánico, donde el j
 
 Link Vídeo:
 
-
+https://youtu.be/R4h9G_ZauZk
 
 Link Trailer:
 

@@ -2,6 +2,14 @@ QT += widgets
 
 CONFIG += c++17
 
+INCLUDEPATH += \
+    $$PWD/Entidades \
+    $$PWD/Fisica \
+    $$PWD/IA \
+    $$PWD/Nivel \
+    $$PWD/logica \
+    $$PWD/Interfaz
+
 SOURCES += \
     Entidades/enemigo.cpp \
     Entidades/entidad.cpp \

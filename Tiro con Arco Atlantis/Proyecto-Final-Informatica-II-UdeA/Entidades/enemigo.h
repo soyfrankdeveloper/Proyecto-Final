@@ -10,6 +10,9 @@ private:
     bool moviendo;
     float tiempoMovimiento;
     float posicionBase;
+    float dirX;
+    float dirY;
+    int contadorCambio;
 
 public:
     Enemigo();

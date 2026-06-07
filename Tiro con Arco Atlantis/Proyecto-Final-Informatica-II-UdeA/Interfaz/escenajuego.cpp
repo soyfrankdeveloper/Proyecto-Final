@@ -63,13 +63,11 @@ void EscenaJuego::actualizarEscena()
 {
     if(juego.getNivel()==1)
     {
-
-
         //le decimos que animacion usar segun su estado
         if(juego.getVidasJugador()<=0)
             animacionActualJugador =&framesJugadorMorir;
 
-        else if (juego.getTurnoJugador()==false)
+        else if (juego.getTurnoJugador()==true)
             animacionActualJugador=&framesJugadorAtaque;
 
         else
@@ -78,13 +76,16 @@ void EscenaJuego::actualizarEscena()
         if(juego.getVidasEnemigo()<=0)
             animacionActualEnemigo=&framesEnemigoMorir;
 
+        else if(juego.getTurnoJugador()==false)
+            animacionActualEnemigo =&framesEnemigoAtaque;
+
         else
             animacionActualEnemigo=&framesEnemigoCorrer;
     }
     else
     {
-        animacionActualJugador=&framesJugadorCorrer;
-        animacionActualEnemigo=&framesEnemigoCorrer;
+        animacionActualJugador=&framesJugadorAtaque;
+        animacionActualEnemigo=&framesEnemigoAtaque;
     }
 
 

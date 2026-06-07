@@ -13,9 +13,15 @@
 #include <vector>
 #include <QTimer>
 
+#include <QMediaPlayer>
+#include <QAudioOutput>
+
 class EscenaJuego : public QGraphicsScene
 {
 private:
+
+    QMediaPlayer* musicaFondo;
+    QAudioOutput* audioOutput;
 
     QGraphicsPixmapItem* jugadorItem;
 
@@ -76,10 +82,7 @@ private:
     int frameEnemigo;
     int contadorAnimacion;
 
-    // int totalFramesJugador;
-    // int totalFramesEnemigo;
-    // QPixmap spriteSheetJugador;
-    // QPixmap spriteSheetEnemigo;
+
 
 
 public:

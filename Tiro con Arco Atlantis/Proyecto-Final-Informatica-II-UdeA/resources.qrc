@@ -40,5 +40,6 @@
         <file>Sprites/Sprites acciones/morirenemigo/morirenemigo2.png</file>
         <file>Sprites/Sprites acciones/morirenemigo/morirenemigo3.png</file>
         <file>Sprites/Sprites acciones/morirenemigo/morirenemigo4.png</file>
+        <file>Sonidos/musicafondo.m4a</file>
     </qresource>
 </RCC>

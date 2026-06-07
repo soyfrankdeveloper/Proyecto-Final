@@ -62,7 +62,9 @@ void Enemigo::actualizarMovimiento(
     // x +=25*sin(tiempoMovimiento*1.3f);
     // y +=20*cos(tiempoMovimiento*0.7f);
 
-    //le colocamos unos limites o bordes al mapa en lvl 2
+    /*la idea principal al utilizar fabs(valor absoluto de float) era que
+     el enemigo en su movimiento aleatorio rebotara contra las paredes al cambiar
+     los valores a valores absolutos positivos*/
     if(x<500){x=500;
         dirX=fabs(dirX);
     }

@@ -2,6 +2,8 @@
 #include <QGraphicsRectItem>
 #include <QBrush>
 #include <QColor>
+#include <QCoreApplication>
+
 
 EscenaJuego::EscenaJuego(QObject *parent)
     : QGraphicsScene(parent)
@@ -220,6 +222,8 @@ void EscenaJuego::actualizarEscena()
 
             if(juego.getNivel()==2)
                 timer.stop();       //le pedimos que apenas muera el enemigo en nivel2, detenga el juego
+                musicaFondo->stop();
+
         }
 
         if(juego.getVidasJugador() <= 0)
@@ -235,6 +239,7 @@ void EscenaJuego::actualizarEscena()
             textoVictoria->setScale(3);
 
             timer.stop();
+            musicaFondo->stop();
         }
     }
 
@@ -470,6 +475,22 @@ void EscenaJuego::inicializarEscena()
     textoTiempo->setPos(
         20,
         200);
+
+
+
+    //musica de fondo
+    musicaFondo = new QMediaPlayer(this);
+    audioOutput = new QAudioOutput(this);
+    musicaFondo->setAudioOutput(audioOutput);
+    audioOutput->setVolume(0.5f);
+
+    // musicaFondo->setSource(QUrl("qrc:/Sonidos/musicafondo.m4a"));
+    musicaFondo->setSource(
+        QUrl::fromLocalFile(
+            QCoreApplication::applicationDirPath()+"/musicafondo.m4a"));
+
+    musicaFondo->setLoops(QMediaPlayer::Infinite);
+    musicaFondo->play();
 }
 
 void EscenaJuego::keyPressEvent(QKeyEvent *event)
